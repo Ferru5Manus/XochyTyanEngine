@@ -1,0 +1,2 @@
+C:\Users\макс\YandexDisk\C++ Engine\XochyTyanEngine\x64\Debug\XochyTyanEngine.exe
+C:\Users\макс\YandexDisk\Engine\XochyTyanEngine\x64\Debug\XochyTyanEngine.exe
