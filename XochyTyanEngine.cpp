@@ -5,13 +5,14 @@
 int main(void)
 {
 
-    LinkedList<double> list;
+    LinkedList<string> list;
     for (int i = 0; i < 10; i++)
     {
-        list.add(i);
+        list.add("Info");
     }
-    list.remove(100);
-    list.toString();
+    list.toString(false);
+    list.remove("Info");
+    list.toString(false);
 
     WindowManager WINDOW_MANAGER;
     char name[] = "SomeWindow";

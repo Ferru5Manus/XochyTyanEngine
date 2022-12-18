@@ -116,39 +116,76 @@ public:
 	*/
 	void remove(int index)
 	{
-		if (index >= size)
+		try
+		{
+			if (index >= size || index < 0)
+			{
+				throw std::invalid_argument("index out of range!");
+			}
+			if (index == 0)
+			{
+				first = first->next;
+				delete first->priv;
+				first->priv = NULL;
+				size--;
+				return;
+			}
+			if (index == size - 1)
+			{
+				last = last->priv;
+				delete last->next;
+				last->next = NULL;
+				size--;
+				return;
+			}
+			Node<T>* node = NULL;
+			if (size / 2 > index)
+			{
+				node = first;
+				for (int i = 0; i < index; i++)
+				{
+					node = node->next;
+				}
+			}
+			else
+			{
+				node = last;
+				for (int i = size - 1; i > index; i--)
+				{
+					node = node->priv;
+				}
+			}
+			node->priv->next = node->next;
+			node->next->priv = node->priv;
+			delete node;
+			size--;
+		}
+		catch (exception e) 
 		{
 			throw std::invalid_argument("index out of range!");
-		}
-		if (index == 0)
-		{
-			first = first->next;
-			delete first->priv;
-			first->priv = NULL;
-			size--;
-			return;
-		}
-		if (index == size - 1)
-		{
-			last = last->priv;
-			delete last->next;
-			last->next = NULL;
-			size--;
-			return;
 		}
 	}
 
 	/*
 	* Выводит массив на экран в виде строки
+	* @param _endl \n flase - нужно вывести подряд \n true - каждый элемент с новой строки
 	*/
-	void toString()
+	void toString(bool _endl)
 	{
 		Node<T>* node = first;
 		while (node != NULL)
 		{
-			cout << node->value << endl;
+			if (_endl)
+			{
+				cout << node->value << endl;
+			}
+			else
+			{
+				cout << node->value << "; ";
+			}
 			node = node->next;
 		}
+		cout << endl;
 	}
 	
 	/**
@@ -156,13 +193,18 @@ public:
 	*/
 	void clear()
 	{
+		if (first == NULL)
+		{
+			return;
+		}
 		Node<T>* node = first;
 		while (node != NULL)
 		{
 			Node<T>* del = node;
 			node = node->next;
-			delete node;
+			delete del;
 		}
+		delete node;
 		size = 0;
 		first = NULL;
 		last = NULL;
