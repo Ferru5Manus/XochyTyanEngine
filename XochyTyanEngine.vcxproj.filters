@@ -19,6 +19,9 @@
     <Filter Include="Исходные файлы\Events">
       <UniqueIdentifier>{c7205090-e032-42c7-8f32-f0a2138211dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Utils">
+      <UniqueIdentifier>{59b9c9b7-f0df-4e6a-8167-242ac0c5b9d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -28,6 +31,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="EventHandler.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -45,6 +51,9 @@
     </ClCompile>
     <ClCompile Include="EventHandler.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Исходные файлы\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
