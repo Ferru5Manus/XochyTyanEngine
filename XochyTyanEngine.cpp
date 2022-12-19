@@ -1,16 +1,11 @@
 ﻿#include <iostream>
 #include "WindowManager.h"
+#include "LinkedList.h"
 
 int main(void)
 {
-    WindowManager WINDOW_MANAGER;
+    WindowManager* WINDOW_MANAGER = new WindowManager();
     char name[] = "SomeWindow";
-    WINDOW_MANAGER.init(name, 500, 500);
-
-    char ch;
-    std::cout << "Enter q for exit\n";
-    std::cin >> ch;
-    if (ch == 'q')
-        WINDOW_MANAGER.destroy();
+    WINDOW_MANAGER->init(name, 800, 800);
     return 0;
 }
