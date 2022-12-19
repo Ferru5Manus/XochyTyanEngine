@@ -5,19 +5,19 @@
 int main(void)
 {
 
-    LinkedList<double> list;
+    LinkedList<double>* list = new LinkedList<double>();
     for (int i = 0; i < 10; i++)
     {
-        list.add(i);
+        list->add(i);
     }
-    list.remove(100);
-    list.toString();
+    list->remove(100);
+    list->toString();
 
     WindowManager WINDOW_MANAGER;
     char name[] = "SomeWindow";
     WINDOW_MANAGER.init(name, 500, 500);
 
-    list.clear();
+    delete list;
 
     return 0;
 }

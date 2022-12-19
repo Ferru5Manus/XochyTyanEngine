@@ -25,6 +25,10 @@ public:
 	{
 
 	}
+	
+	~LinkedList() {
+		clear();
+	}
 
 	/*
 	* Возвращает длину массива
@@ -112,13 +116,13 @@ public:
 
 	/*
 	* Удаляет элемент по индексу
-	* @throw std::invalid_argument
+	* @return true - если операция удалась, false - если нет
 	*/
-	void remove(int index)
+	bool remove(int index)
 	{
 		if (index >= size)
 		{
-			throw std::invalid_argument("index out of range!");
+			return false;
 		}
 		if (index == 0)
 		{
@@ -126,7 +130,7 @@ public:
 			delete first->priv;
 			first->priv = NULL;
 			size--;
-			return;
+			return true;
 		}
 		if (index == size - 1)
 		{
@@ -134,7 +138,7 @@ public:
 			delete last->next;
 			last->next = NULL;
 			size--;
-			return;
+			return true;
 		}
 	}
 
@@ -156,12 +160,17 @@ public:
 	*/
 	void clear()
 	{
+		if (first == NULL) 
+		{
+			last = NULL;
+			size = 0;
+		}
 		Node<T>* node = first;
 		while (node != NULL)
 		{
 			Node<T>* del = node;
 			node = node->next;
-			delete node;
+			delete del;
 		}
 		size = 0;
 		first = NULL;
