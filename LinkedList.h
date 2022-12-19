@@ -3,33 +3,47 @@
 
 using namespace std;
 
+template <typename T>
 struct Node
 {
-	float value;
-	Node* priv;
-	Node* next;
+	T value;
+	Node<T>* priv;
+	Node<T>* next;
 };
 
+template <typename T>
+/*
+* Связанный список
+*/
 class LinkedList
 {
 public:
-	LinkedList() 
+	/*
+	* Связанный список
+	*/
+	LinkedList()
 	{
 
 	}
 
+	/*
+	* Возвращает длину массива
+	*/
 	int len()
 	{
 		return size;
 	}
 
 
-
-	bool add(float item) 
+	/*
+	* Добавляет item в конец
+	* @return возвращает flase, если произошла ошибка
+	*/
+	bool add(T item)
 	{
-		try 
+		try
 		{
-			Node* node = new Node;
+			Node<T>* node = new Node<T>;
 			node->value = item;
 			node->next = NULL;
 			if (first == NULL)
@@ -51,12 +65,16 @@ public:
 		}
 	}
 
-
-	bool insert(int index, float item) 
+	/*
+	* @param index - элемент, перед которым будет вставлен элемент
+	* @param item  - элемент
+	* @return возвращает flase, если произошла ошибка
+	*/
+	bool insert(int index, T item)
 	{
 		try
 		{
-			Node* node = new Node;
+			Node<T>* node = new Node<T>;
 			node->value = item;
 			if (index == size || first == NULL)
 			{
@@ -74,7 +92,7 @@ public:
 				size++;
 				return true;
 			}
-			Node* last_node = first;
+			Node<T>* last_node = first;
 			for (int i = 1; i <= index; i++)
 			{
 				last_node = last_node->next;
@@ -92,19 +110,110 @@ public:
 		}
 	}
 
-	void toString()
+	/*
+	* Удаляет элемент по индексу
+	* @return flase, если произошла ошибка
+	*/
+	bool remove(int index)
 	{
-		Node* node = first;
-		while (node != NULL)
+		try
 		{
-			cout << node->value << endl;
-			node = node->next;
+			if (index >= size || index < 0)
+			{
+				return true;
+			}
+			if (index == 0)
+			{
+				first = first->next;
+				delete first->priv;
+				first->priv = NULL;
+				size--;
+				return true;
+			}
+			if (index == size - 1)
+			{
+				last = last->priv;
+				delete last->next;
+				last->next = NULL;
+				size--;
+				return true;
+			}
+			Node<T>* node = NULL;
+			if (size / 2 > index)
+			{
+				node = first;
+				for (int i = 0; i < index; i++)
+				{
+					node = node->next;
+				}
+			}
+			else
+			{
+				node = last;
+				for (int i = size - 1; i > index; i--)
+				{
+					node = node->priv;
+				}
+			}
+			node->priv->next = node->next;
+			node->next->priv = node->priv;
+			delete node;
+			size--;
+			return true;
+		}
+		catch (exception e)
+		{
+			return false;
 		}
 	}
 
+	/*
+	* Выводит массив на экран в виде строки
+	* @param _endl \n flase - нужно вывести подряд \n true - каждый элемент с новой строки
+	*/
+	void toString(bool _endl)
+	{
+		Node<T>* node = first;
+		while (node != NULL)
+		{
+			if (_endl)
+			{
+				cout << node->value << endl;
+			}
+			else
+			{
+				cout << node->value << "; ";
+			}
+			node = node->next;
+		}
+		cout << endl;
+	}
+
+	/**
+	 Метод очищет массив и освобождает всю выделенню под него память
+	*/
+	void clear()
+	{
+		if (first == NULL)
+		{
+			return;
+		}
+		Node<T>* node = first;
+		while (node != NULL)
+		{
+			Node<T>* del = node;
+			node = node->next;
+			delete del;
+		}
+		delete node;
+		size = 0;
+		first = NULL;
+		last = NULL;
+	}
+
 private:
-	Node* first = NULL;
-	Node* last = NULL;
+	Node<T>* first = NULL;
+	Node<T>* last = NULL;
 	int size = 0;
 
 };
