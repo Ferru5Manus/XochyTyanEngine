@@ -132,12 +132,16 @@
   <ItemGroup>
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="RenderLayer.cpp" />
+    <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="WindowManager.cpp" />
     <ClCompile Include="XochyTyanEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="RenderLayer.h" />
+    <ClInclude Include="RenderManager.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>

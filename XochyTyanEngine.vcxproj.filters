@@ -22,6 +22,9 @@
     <Filter Include="Исходные файлы\Utils">
       <UniqueIdentifier>{59b9c9b7-f0df-4e6a-8167-242ac0c5b9d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Render">
+      <UniqueIdentifier>{0d5f6641-e4c3-470d-b490-2eb352ae0ac5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -34,6 +37,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="LinkedList.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderLayer.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -54,6 +63,12 @@
     </ClCompile>
     <ClCompile Include="LinkedList.cpp">
       <Filter>Исходные файлы\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>Исходные файлы\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderLayer.cpp">
+      <Filter>Исходные файлы\Render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

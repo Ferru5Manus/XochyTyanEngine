@@ -4,21 +4,8 @@
 
 int main(void)
 {
-
-    LinkedList<string> *list = new LinkedList<string>();
-    for (int i = 0; i < 10; i++)
-    {
-        list->add("Info");
-    }
-    list->toString(false);
-    list->remove(0);
-    list->toString(false);
-
-    WindowManager WINDOW_MANAGER;
+    WindowManager* WINDOW_MANAGER = new WindowManager();
     char name[] = "SomeWindow";
-    WINDOW_MANAGER.init(name, 500, 500);
-
-    delete list;
-
+    WINDOW_MANAGER->init(name, 800, 800);
     return 0;
 }
